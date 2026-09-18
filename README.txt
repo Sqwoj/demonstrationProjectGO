@@ -10,15 +10,12 @@ $env:DB_USER='postgres'
 $env:DB_PASSWORD='1842'
 $env:DB_NAME='postgres'
 
-ЗАПУСК ЧЕРЕЗ start.bat ВПИСЫВАЕТ ПЕРЕМЕННЫЕ ОКРУЖЕНИЯ САМ, ПОЭТОМУ ПРОСТО ЗАПУСКАЕМ
-
-СОБИРАЕМ ПРОЕКТ
-go build .
-
 ЗАПУСКАЕМ ЕГО
 go run .
 
-ПРОВЕРЯЕМ РЕГИСТРАЦИЯ
+ЗАПУСК ЧЕРЕЗ start.bat ВПИСЫВАЕТ ПЕРЕМЕННЫЕ ОКРУЖЕНИЯ САМ, ПОЭТОМУ ПРОСТО ЗАПУСКАЕМ
+
+РЕГИСТРАЦИЯ
 $regBody = @{ username = "alice"; password = "secret123" } | ConvertTo-Json
 Invoke-RestMethod -Method Post -Uri "http://localhost:8080/register" -ContentType "application/json" -Body $regBody
 
